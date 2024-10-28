@@ -20,10 +20,10 @@ void Ball::draw(SDL_Renderer *rend){
 void Ball::bounce(char direction){
 	switch(direction){
 		case 'x':
-			vel_x *= -1.2;
+			vel_x *= -1;
 			break;
 		case 'y':
-			vel_y *= -1.2;
+			vel_y *= -1;
 			break;
 	}
 }
@@ -31,10 +31,20 @@ void Ball::bounce(char direction){
 void Ball::break_brick(){}
 
 void Ball::move(){
-	if(rect.x < 0 || rect.x + rect.w > 900) {
+	if(rect.x < 0) {
+		rect.x = 0;
 		bounce('x');
 	}
-	if(rect.y < 0 || rect.y + rect.h > 600){
+	if(rect.x + rect.w > 900) {
+		rect.x = 900 - rect.w;
+		bounce('x');
+	}
+	if(rect.y < 0) {
+		rect.y = 0;
+		bounce('y');
+	}
+	if(rect.y + rect.h > 600){
+		rect.y = 600 - rect.h;
 		bounce('y');
 	}
 	rect.x += vel_x;
