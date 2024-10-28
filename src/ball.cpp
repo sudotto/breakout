@@ -7,8 +7,8 @@ Ball::Ball(){
 	rect.y = 550;
 	rect.w = 10;
 	rect.h = 10;
-	vel_x = 10;
-	vel_y = 10;
+	vel_x = -10;
+	vel_y = -10;
 }
 
 void Ball::draw(SDL_Renderer *rend){
@@ -20,6 +20,12 @@ void Ball::bounce(){}
 
 void Ball::break_brick(){}
 
-void Ball::move(){}
+void Ball::move(){
+	rect.x += vel_x;
+	rect.y += vel_y;
+}
 
-void Ball::handle(){}
+void Ball::handle(SDL_Renderer *rend){
+	move();
+	draw(rend);
+}

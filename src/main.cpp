@@ -11,6 +11,7 @@ int main(int argc, char* argv[]){
 	Ball ball;
 	bool running = true;
 	while(running){
+		Uint32 frame_start = SDL_GetTicks();
 		SDL_Event event;
 		while(SDL_PollEvent(&event)){
 			switch(event.type){
@@ -22,8 +23,12 @@ int main(int argc, char* argv[]){
 					break;
 			}
 		}
+		Uint32 frame_time = SDL_GetTicks() - frame_start;
+		if(frame_time < 60){
+			SDL_Delay(60 - frame_time);
+		}
 		SDL_RenderClear(rend);
-		ball.draw(rend);
+		ball.handle(rend);
 		SDL_SetRenderDrawColor(rend, 0, 0, 0, 255);
 		SDL_RenderPresent(rend);
 	}

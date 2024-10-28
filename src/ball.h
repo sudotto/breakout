@@ -14,7 +14,7 @@ class Ball {
 		void bounce();
 		void break_brick();
 		void move();
-		void handle();
+		void handle(SDL_Renderer *rend);
 };
 
 #endif
