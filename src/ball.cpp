@@ -1,3 +1,4 @@
+#include <iostream>
 #include <SDL2/SDL.h>
 
 #include "ball.h"
@@ -16,11 +17,26 @@ void Ball::draw(SDL_Renderer *rend){
 	SDL_RenderFillRect(rend, &rect);
 }
 
-void Ball::bounce(){}
+void Ball::bounce(char direction){
+	switch(direction){
+		case 'x':
+			vel_x *= -1.2;
+			break;
+		case 'y':
+			vel_y *= -1.2;
+			break;
+	}
+}
 
 void Ball::break_brick(){}
 
 void Ball::move(){
+	if(rect.x < 0 || rect.x + rect.w > 900) {
+		bounce('x');
+	}
+	if(rect.y < 0 || rect.y + rect.h > 600){
+		bounce('y');
+	}
 	rect.x += vel_x;
 	rect.y += vel_y;
 }

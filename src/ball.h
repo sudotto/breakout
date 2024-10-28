@@ -11,7 +11,7 @@ class Ball {
 		int vel_x;
 		int vel_y;
 		void draw(SDL_Renderer *rend);
-		void bounce();
+		void bounce(char direction);
 		void break_brick();
 		void move();
 		void handle(SDL_Renderer *rend);
