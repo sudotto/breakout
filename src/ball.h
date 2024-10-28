@@ -2,15 +2,19 @@
 #define BALL_H
 
 #include <iostream>
+#include <SDL2/SDL.h>
 
-#include "entity.h"
-
-typedef struct ball{
-	entity ent;
-	int x_vel;
-	int y_vel;
-} ball;
-
-ball new_ball();
+class Ball {
+	public:
+		Ball();
+		SDL_Rect rect;
+		int vel_x;
+		int vel_y;
+		void draw(SDL_Renderer *rend);
+		void bounce();
+		void break_brick();
+		void move();
+		void handle();
+};
 
 #endif

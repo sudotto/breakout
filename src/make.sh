@@ -1,1 +1,1 @@
-g++ main.cpp -o breakout -lSDL2
+g++ main.cpp ball.cpp -o breakout -lSDL2
